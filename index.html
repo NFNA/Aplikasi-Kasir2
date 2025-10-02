@@ -588,7 +588,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 method: 'POST',
                 mode: 'cors',
                 headers: {
-                    'Content-Type': 'text/plain;charset=utf-8',
+                  'Content-Type': 'text/plain;charset=utf-8',
                 },
                 body: JSON.stringify({ action, payload })
             });
@@ -602,6 +602,8 @@ document.addEventListener('DOMContentLoaded', () => {
         } catch (error) {
             console.error('Error calling Apps Script:', error);
             showToast('Gagal terhubung ke backend.', 'error');
+            // Menambahkan log ini untuk membantu user melakukan debug
+            console.log("Tips: Pastikan Google Apps Script sudah di-deploy ulang (Deploy > Manage deployments > Edit > New version > Deploy) dengan akses diatur ke 'Siapa saja' (Anyone).");
             return { success: false, error: error.message };
         } finally {
             hideLoader();
@@ -908,3 +910,4 @@ document.addEventListener('DOMContentLoaded', () => {
 </script>
 </body>
 </html>
+
